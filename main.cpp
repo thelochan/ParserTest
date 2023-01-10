@@ -39,7 +39,7 @@ int main()
         std::cout << "Warning: Merkle root in block header does not match calculated root!" << std::endl;
     }
 
-    // Verify the proof-of-work on the block
+    // Verify the POW on the block
     bc::hash_digest hash = header.hash();
     if (!bc::check_proof_of_work(hash, header.bits)) {
         std::cout << "Error: Block failed proof-of-work check!" << std::endl;
@@ -58,7 +58,7 @@ int main()
     }
     double total_btc_in_btc = total_btc / bc::satoshi_per_bitcoin;
 
-    // Prepare JSON output
+    //JSON
     json block_json;
     block_json["hash"] = bc::encode_hex(hash);
     block_json["merkle_root"] = bc::encode_hex(merkle_root);
@@ -71,7 +71,7 @@ int main()
     }
     std::cout << block
     
-    // Prepare CSV output
+    //CSV
     std::stringstream csv;
     csv << "hash,total_btc,transactions" << std::endl;
     csv << bc::encode_hex(hash) << "," << total_btc_in_btc << ",";
